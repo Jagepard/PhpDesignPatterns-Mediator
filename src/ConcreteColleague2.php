@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types = 1);
+
 /**
  * @author    : Korotkov Danila <dankorot@gmail.com>
  * @copyright Copyright (c) 2017, Korotkov Danila
@@ -11,13 +14,13 @@ namespace Behavioral\Mediator;
  * Class ConcreteColleague2
  * @package Behavioral\Mediator
  */
-class ConcreteColleague2
+class ConcreteColleague2 implements ColleagueInterface
 {
 
     /**
      * @param SomeEvent $event
      */
-    public function onEvent(SomeEvent $event)
+    public function onEvent(SomeEvent $event): void
     {
         $event->setMessage('Fine, thanks!');
         print $event->getMessage() . "\n";
