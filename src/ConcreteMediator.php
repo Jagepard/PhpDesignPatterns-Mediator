@@ -67,16 +67,6 @@ class ConcreteMediator implements MediatorInterface
      *
      * @return string
      */
-    public function getInstance($key): string
-    {
-        return $this->instances[$key];
-    }
-
-    /**
-     * @param $key
-     *
-     * @return string
-     */
     public function getMethod($key): string
     {
         return $this->methods[$key];
