@@ -15,7 +15,7 @@ namespace Behavioral\Mediator;
  *
  * @package Behavioral\Mediator
  */
-interface Colleague
+interface ColleagueInterface
 {
 
 }
