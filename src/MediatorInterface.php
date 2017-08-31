@@ -18,7 +18,18 @@ namespace Behavioral\Mediator;
 interface MediatorInterface
 {
 
-    public function addListener(string $key, $instance, $method);
+    /**
+     * @param string $key
+     * @param string $instance
+     * @param string $method
+     */
+    public function addListener(string $key, string $instance, string $method): void;
 
+    /**
+     * @param string         $key
+     * @param SomeEvent|null $event
+     *
+     * @return mixed
+     */
     public function dispatch(string $key, SomeEvent $event = null);
 }
