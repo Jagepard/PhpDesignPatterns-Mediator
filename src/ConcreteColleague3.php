@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types = 1);
 
 /**
  * @author    : Korotkov Danila <dankorot@gmail.com>
@@ -13,7 +14,7 @@ namespace Behavioral\Mediator;
  * Class ConcreteColleague3
  * @package Behavioral\Mediator
  */
-class ConcreteColleague3
+class ConcreteColleague3 implements ColleagueInterface
 {
 
     /**
