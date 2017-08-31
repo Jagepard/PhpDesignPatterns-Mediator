@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types = 1);
+
 /**
  * @author    : Korotkov Danila <dankorot@gmail.com>
  * @copyright Copyright (c) 2017, Korotkov Danila
@@ -15,21 +18,43 @@ namespace Behavioral\Mediator;
 class ConcreteMediator implements MediatorInterface
 {
 
+    /**
+     * @var array
+     */
     protected $instances = [];
 
+    /**
+     * @var array
+     */
     protected $methods = [];
 
-    public function addListener(string $key, $instance, $method)
+    /**
+     * @param string $key
+     * @param string $instance
+     * @param string $method
+     */
+    public function addListener(string $key, string $instance, string $method): void
     {
         $this->instances[$key] = $instance;
         $this->methods[$key]   = $method;
     }
 
-    public function getListener(string $key)
+    /**
+     * @param string $key
+     *
+     * @return ColleagueInterface
+     */
+    public function getListener(string $key): ColleagueInterface
     {
         return new $this->instances[$key]();
     }
 
+    /**
+     * @param string         $key
+     * @param SomeEvent|null $event
+     *
+     * @return mixed
+     */
     public function dispatch(string $key, SomeEvent $event = null)
     {
         $method = $this->getMethod($key);
@@ -37,12 +62,22 @@ class ConcreteMediator implements MediatorInterface
         return $this->getListener($key)->$method($event);
     }
 
-    public function getInstance($key)
+    /**
+     * @param $key
+     *
+     * @return string
+     */
+    public function getInstance($key): string
     {
         return $this->instances[$key];
     }
 
-    public function getMethod($key)
+    /**
+     * @param $key
+     *
+     * @return string
+     */
+    public function getMethod($key): string
     {
         return $this->methods[$key];
     }
