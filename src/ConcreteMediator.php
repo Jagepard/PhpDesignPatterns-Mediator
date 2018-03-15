@@ -49,16 +49,15 @@ class ConcreteMediator implements MediatorInterface
     }
 
     /**
-     * @param string         $listener
-     * @param SomeEvent|null $event
-     *
+     * @param string           $listener
+     * @param SomeHandler|null $handler
      * @return mixed
      */
-    public function dispatch(string $listener, SomeEvent $event = null)
+    public function dispatch(string $listener, SomeHandler $handler = null)
     {
         $method = $this->getMethod($listener);
 
-        return $this->getListener($listener)->$method($event);
+        return $this->getListener($listener)->$method($handler);
     }
 
     /**

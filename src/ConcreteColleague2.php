@@ -18,9 +18,9 @@ class ConcreteColleague2 implements ColleagueInterface
 {
 
     /**
-     * @param SomeEvent $event
+     * @param SomeHandler $event
      */
-    public function onEvent(SomeEvent $event): void
+    public function onEvent(SomeHandler $event): void
     {
         $event->setMessage('Fine, thanks!');
         print $event->getMessage() . "\n";
