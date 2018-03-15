@@ -29,14 +29,14 @@ class ConcreteMediator implements MediatorInterface
     protected $methods = [];
 
     /**
-     * @param string $key
+     * @param string $listener
      * @param string $instance
-     * @param string $method
+     * @param string $event
      */
-    public function addListener(string $key, string $instance, string $method): void
+    public function addListener(string $listener, string $instance, string $event): void
     {
-        $this->instances[$key] = $instance;
-        $this->methods[$key]   = $method;
+        $this->instances[$listener] = $instance;
+        $this->methods[$listener]   = $event;
     }
 
     /**
@@ -50,25 +50,24 @@ class ConcreteMediator implements MediatorInterface
     }
 
     /**
-     * @param string         $key
+     * @param string         $listener
      * @param SomeEvent|null $event
      *
      * @return mixed
      */
-    public function dispatch(string $key, SomeEvent $event = null)
+    public function dispatch(string $listener, SomeEvent $event = null)
     {
-        $method = $this->getMethod($key);
+        $method = $this->getMethod($listener);
 
-        return $this->getListener($key)->$method($event);
+        return $this->getListener($listener)->$method($event);
     }
 
     /**
-     * @param $key
-     *
+     * @param string $listener
      * @return string
      */
-    public function getMethod($key): string
+    public function getMethod(string $listener): string
     {
-        return $this->methods[$key];
+        return $this->methods[$listener];
     }
 }
