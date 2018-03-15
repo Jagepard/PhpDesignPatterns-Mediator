@@ -26,10 +26,10 @@ interface MediatorInterface
     public function addListener(string $key, string $instance, string $method): void;
 
     /**
-     * @param string         $key
-     * @param SomeEvent|null $event
+     * @param string           $key
+     * @param SomeHandler|null $event
      *
      * @return mixed
      */
-    public function dispatch(string $key, SomeEvent $event = null);
+    public function dispatch(string $key, SomeHandler $event = null);
 }

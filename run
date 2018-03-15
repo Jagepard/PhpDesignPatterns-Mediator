@@ -6,13 +6,12 @@ namespace Behavioral\Mediator;
 require_once 'vendor/autoload.php';
 
 $mediator = new ConcreteMediator();
-
-$event    = new SomeEvent();
+$handler  = new SomeHandler();
 
 $mediator->addListener('colleague_1', ConcreteColleague1::class, 'onEvent');
 $mediator->addListener('colleague_2', ConcreteColleague2::class, 'onEvent');
 $mediator->addListener('colleague_3', ConcreteColleague3::class, 'onEvent');
 
-$mediator->dispatch('colleague_1', $event);
-$mediator->dispatch('colleague_2', $event);
-$mediator->dispatch('colleague_3', $event);
+$mediator->dispatch('colleague_1', $handler);
+$mediator->dispatch('colleague_2', $handler);
+$mediator->dispatch('colleague_3', $handler);

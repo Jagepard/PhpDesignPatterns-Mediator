@@ -20,13 +20,13 @@ class MediatorTest extends PHPUnit_Framework_TestCase
     protected function setUp(): void
     {
         $this->mediator = new \Behavioral\Mediator\ConcreteMediator();
-        $this->event    = new \Behavioral\Mediator\SomeEvent();
+        $this->event    = new \Behavioral\Mediator\SomeHandler();
     }
 
     public function testInstance(): void
     {
         $this->assertInstanceOf(\Behavioral\Mediator\MediatorInterface::class, $this->getMediator());
-        $this->assertInstanceOf(\Behavioral\Mediator\SomeEvent::class, $this->getEvent());
+        $this->assertInstanceOf(\Behavioral\Mediator\SomeHandler::class, $this->getEvent());
     }
 
     public function testDispatch(): void
@@ -63,7 +63,7 @@ class MediatorTest extends PHPUnit_Framework_TestCase
     /**
      * @return mixed
      */
-    public function getEvent(): \Behavioral\Mediator\SomeEvent
+    public function getEvent(): \Behavioral\Mediator\SomeHandler
     {
         return $this->event;
     }

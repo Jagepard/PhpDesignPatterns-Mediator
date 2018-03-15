@@ -5,11 +5,10 @@ declare(strict_types = 1);
 namespace Behavioral\Mediator;
 
 /**
- * Class SomeEvent
- *
+ * Class SomeHandler
  * @package Behavioral\Mediator
  */
-class SomeEvent
+class SomeHandler
 {
     /**
      * @var

@@ -18,9 +18,9 @@ class ConcreteColleague3 implements ColleagueInterface
 {
 
     /**
-     * @param SomeEvent $event
+     * @param SomeHandler $event
      */
-    public function onEvent(SomeEvent $event): void
+    public function onEvent(SomeHandler $event): void
     {
         $event->setMessage('Fuck you all!');
         print $event->getMessage() . "\n";
