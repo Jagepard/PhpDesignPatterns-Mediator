@@ -1,0 +1,18 @@
+#! usr/bin/env php
+<?php
+
+namespace Behavioral\Mediator;
+
+require_once 'vendor/autoload.php';
+
+$mediator = new ConcreteMediator();
+
+$event    = new SomeEvent();
+
+$mediator->addListener('colleague_1', ConcreteColleague1::class, 'onEvent');
+$mediator->addListener('colleague_2', ConcreteColleague2::class, 'onEvent');
+$mediator->addListener('colleague_3', ConcreteColleague3::class, 'onEvent');
+
+$mediator->dispatch('colleague_1', $event);
+$mediator->dispatch('colleague_2', $event);
+$mediator->dispatch('colleague_3', $event);
