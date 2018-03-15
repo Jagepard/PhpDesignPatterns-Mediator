@@ -40,13 +40,12 @@ class ConcreteMediator implements MediatorInterface
     }
 
     /**
-     * @param string $key
-     *
+     * @param string $listener
      * @return ColleagueInterface
      */
-    public function getListener(string $key): ColleagueInterface
+    public function getListener(string $listener): ColleagueInterface
     {
-        return new $this->instances[$key]();
+        return new $this->instances[$listener]();
     }
 
     /**
