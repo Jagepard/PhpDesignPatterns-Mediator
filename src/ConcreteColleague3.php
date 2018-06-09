@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  * @author    : Korotkov Danila <dankorot@gmail.com>
- * @copyright Copyright (c) 2017, Korotkov Danila
- * @license   http://www.gnu.org/licenses/gpl.html GNU GPLv3.0
+ * @license   https://mit-license.org/ MIT
  */
 
 namespace Behavioral\Mediator;
@@ -14,15 +13,15 @@ namespace Behavioral\Mediator;
  * Class ConcreteColleague3
  * @package Behavioral\Mediator
  */
-class ConcreteColleague3 implements ColleagueInterface
+class ConcreteColleague3 implements ListenerInterface
 {
 
     /**
-     * @param SomeHandler $event
+     * @param HandlerInterface $handler
      */
-    public function onEvent(SomeHandler $event): void
+    public function onEvent(HandlerInterface $handler): void
     {
-        $event->setMessage('Fuck you all!');
-        print $event->getMessage() . "\n";
+        $handler->setMessage('Fuck you all!');
+        printf("%s\n", $handler->getMessage());
     }
 }

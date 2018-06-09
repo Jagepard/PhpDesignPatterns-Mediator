@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  * @author    : Korotkov Danila <dankorot@gmail.com>
- * @copyright Copyright (c) 2017, Korotkov Danila
- * @license   http://www.gnu.org/licenses/gpl.html GNU GPLv3.0
+ * @license   https://mit-license.org/ MIT
  */
 
 namespace Behavioral\Mediator;
 
 /**
  * Interface MediatorInterface
- *
  * @package Behavioral\Mediator
  */
 interface MediatorInterface
@@ -21,15 +19,14 @@ interface MediatorInterface
     /**
      * @param string $key
      * @param string $instance
-     * @param string $method
+     * @param string $event
      */
-    public function addListener(string $key, string $instance, string $method): void;
+    public function addListener(string $key, string $instance, string $event): void;
 
     /**
-     * @param string           $key
-     * @param SomeHandler|null $event
-     *
+     * @param string                $key
+     * @param HandlerInterface|null $event
      * @return mixed
      */
-    public function dispatch(string $key, SomeHandler $event = null);
+    public function dispatch(string $key, HandlerInterface $event = null);
 }
