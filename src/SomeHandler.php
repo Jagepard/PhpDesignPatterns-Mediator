@@ -1,6 +1,11 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
+
+/**
+ * @author    : Korotkov Danila <dankorot@gmail.com>
+ * @license   https://mit-license.org/ MIT
+ */
 
 namespace Behavioral\Mediator;
 
@@ -8,7 +13,7 @@ namespace Behavioral\Mediator;
  * Class SomeHandler
  * @package Behavioral\Mediator
  */
-class SomeHandler
+class SomeHandler implements HandlerInterface
 {
     /**
      * @var

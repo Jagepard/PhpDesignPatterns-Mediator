@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  * @author    : Korotkov Danila <dankorot@gmail.com>
- * @copyright Copyright (c) 2017, Korotkov Danila
- * @license   http://www.gnu.org/licenses/gpl.html GNU GPLv3.0
+ * @license   https://mit-license.org/ MIT
  */
 
 namespace Behavioral\Mediator;
 
 /**
  * Class ConcreteMediator
- *
  * @package Behavioral\Mediator
  */
 class ConcreteMediator implements MediatorInterface
@@ -21,12 +19,11 @@ class ConcreteMediator implements MediatorInterface
     /**
      * @var array
      */
-    protected $instances = [];
-
+    protected $events = [];
     /**
      * @var array
      */
-    protected $methods = [];
+    protected $instances = [];
 
     /**
      * @param string $listener
@@ -35,37 +32,20 @@ class ConcreteMediator implements MediatorInterface
      */
     public function addListener(string $listener, string $instance, string $event): void
     {
+        $this->events[$listener]    = $event;
         $this->instances[$listener] = $instance;
-        $this->methods[$listener]   = $event;
-    }
-
-    /**
-     * @param string $listener
-     * @return ColleagueInterface
-     */
-    public function getListener(string $listener): ColleagueInterface
-    {
-        return new $this->instances[$listener]();
     }
 
     /**
      * @param string           $listener
-     * @param SomeHandler|null $handler
+     * @param HandlerInterface|null $handler
      * @return mixed
      */
-    public function dispatch(string $listener, SomeHandler $handler = null)
+    public function dispatch(string $listener, HandlerInterface $handler = null)
     {
-        $method = $this->getMethod($listener);
+        $method   = $this->events[$listener];
+        $listener = new $this->instances[$listener]();
 
-        return $this->getListener($listener)->$method($handler);
-    }
-
-    /**
-     * @param string $listener
-     * @return string
-     */
-    public function getMethod(string $listener): string
-    {
-        return $this->methods[$listener];
+        return $listener->$method($handler);
     }
 }
