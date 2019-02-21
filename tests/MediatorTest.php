@@ -27,11 +27,11 @@ class MediatorTest extends PHPUnit_Framework_TestCase
     /**
      * @var HandlerInterface
      */
-    protected $handler;
+    private $handler;
     /**
      * @var MediatorInterface
      */
-    protected $mediator;
+    private $mediator;
 
     protected function setUp(): void
     {
