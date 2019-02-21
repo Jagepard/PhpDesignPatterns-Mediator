@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * @author    : Korotkov Danila <dankorot@gmail.com>
  * @license   https://mit-license.org/ MIT
@@ -15,18 +13,16 @@ namespace Behavioral\Mediator;
  */
 interface MediatorInterface
 {
-
     /**
-     * @param string $key
-     * @param string $instance
-     * @param string $event
+     * @param string $name
+     * @param array  $listener
      */
-    public function addListener(string $key, string $instance, string $event): void;
+    public function addListener(string $name, array $listener): void;
 
     /**
-     * @param string                $key
-     * @param HandlerInterface|null $event
+     * @param string                $name
+     * @param HandlerInterface|null $handler
      * @return mixed
      */
-    public function dispatch(string $key, HandlerInterface $event = null);
+    public function dispatch(string $name, HandlerInterface $handler = null);
 }

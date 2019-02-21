@@ -15,37 +15,42 @@ namespace Behavioral\Mediator;
  */
 class ConcreteMediator implements MediatorInterface
 {
-
     /**
      * @var array
      */
-    protected $events = [];
-    /**
-     * @var array
-     */
-    protected $instances = [];
+    private $listeners = [];
 
     /**
-     * @param string $listener
-     * @param string $instance
-     * @param string $event
+     * @param string $name
+     * @param array  $listener
      */
-    public function addListener(string $listener, string $instance, string $event): void
+    public function addListener(string $name, array $listener): void
     {
-        $this->events[$listener]    = $event;
-        $this->instances[$listener] = $instance;
+        if (count($listener) !== 2) {
+            throw new \InvalidArgumentException();
+        }
+
+        $this->listeners[$name] = $listener;
     }
 
     /**
-     * @param string           $listener
+     * @param string                $name
      * @param HandlerInterface|null $handler
      * @return mixed
      */
-    public function dispatch(string $listener, HandlerInterface $handler = null)
+    public function dispatch(string $name, HandlerInterface $handler = null)
     {
-        $method   = $this->events[$listener];
-        $listener = new $this->instances[$listener]();
+        if (array_key_exists($name, $this->listeners)) {
+            $class  = $this->listeners[$name][0];
+            $method = $this->listeners[$name][1];
 
-        return $listener->$method($handler);
+            if (is_string($class) && class_exists($class)) {
+                return (new $class())->$method($handler);
+            }
+
+            return $class->$method($handler);
+        }
+
+        throw new \InvalidArgumentException();
     }
 }

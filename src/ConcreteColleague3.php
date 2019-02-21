@@ -15,7 +15,6 @@ namespace Behavioral\Mediator;
  */
 class ConcreteColleague3 implements ListenerInterface
 {
-
     /**
      * @param HandlerInterface $handler
      */
