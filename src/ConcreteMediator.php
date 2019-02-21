@@ -40,6 +40,17 @@ class ConcreteMediator implements MediatorInterface
      */
     public function dispatch(string $name, HandlerInterface $handler = null)
     {
-        return $this->listeners[$name][0]->{$this->listeners[$name][1]}($handler);
+        if (array_key_exists($name, $this->listeners)) {
+            $class  = $this->listeners[$name][0];
+            $method = $this->listeners[$name][1];
+
+            if (is_string($class) && class_exists($class)) {
+                return (new $class())->$method($handler);
+            }
+
+            return $class->$method($handler);
+        }
+
+        throw new \InvalidArgumentException();
     }
 }

@@ -18,7 +18,7 @@ class SomeHandler implements HandlerInterface
     /**
      * @var
      */
-    protected $message;
+    private $message;
 
     /**
      * @param string $message

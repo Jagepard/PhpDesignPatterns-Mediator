@@ -15,13 +15,8 @@ namespace Behavioral\Mediator;
  */
 class ConcreteColleague1 implements ListenerInterface
 {
-
-    /**
-     * @param HandlerInterface $handler
-     */
-    public function onEvent(HandlerInterface $handler): void
+    public function onEvent(): void
     {
-        $handler->setMessage('How are you?');
-        printf("%s\n", $handler->getMessage());
+        printf("%s\n", 'How are you?');
     }
 }
