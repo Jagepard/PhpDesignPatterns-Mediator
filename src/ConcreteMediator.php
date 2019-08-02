@@ -27,7 +27,11 @@ class ConcreteMediator implements MediatorInterface
     public function addListener(string $name, array $listener): void
     {
         if (count($listener) !== 2) {
-            throw new \InvalidArgumentException();
+            throw new \InvalidArgumentException('Array must have two elements');
+        }
+
+        if (array_key_exists($name, $this->listeners)) {
+            throw new \InvalidArgumentException('Listener already exists');
         }
 
         $this->listeners[$name] = $listener;
@@ -51,6 +55,6 @@ class ConcreteMediator implements MediatorInterface
             return $class->$method($handler);
         }
 
-        throw new \InvalidArgumentException();
+        throw new \InvalidArgumentException('Listener does not exists');
     }
 }
