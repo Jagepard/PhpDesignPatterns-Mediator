@@ -55,6 +55,6 @@ class ConcreteMediator implements MediatorInterface
             return $class->$method($handler);
         }
 
-        throw new \InvalidArgumentException('Listener does not exists');
+        throw new \InvalidArgumentException('Listener does not exist');
     }
 }
