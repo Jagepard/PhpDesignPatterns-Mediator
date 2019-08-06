@@ -18,10 +18,6 @@ use Behavioral\Mediator\ConcreteColleague2;
 use Behavioral\Mediator\ConcreteColleague3;
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 
-/**
- * Class MediatorTest
- * @package Behavioral\Mediator\Tests
- */
 class MediatorTest extends PHPUnit_Framework_TestCase
 {
     /**
