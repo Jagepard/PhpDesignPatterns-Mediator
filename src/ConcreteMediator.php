@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-/**
- * Class ConcreteMediator
- * @package Behavioral\Mediator
- */
 class ConcreteMediator implements MediatorInterface
 {
     /**
@@ -55,6 +51,6 @@ class ConcreteMediator implements MediatorInterface
             return $class->$method($handler);
         }
 
-        throw new \InvalidArgumentException('Listener does not exist');
+        throw new \InvalidArgumentException('Listener ' . $name . ' does not exist');
     }
 }
