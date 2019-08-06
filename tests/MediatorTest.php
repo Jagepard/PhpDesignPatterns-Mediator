@@ -59,9 +59,9 @@ class MediatorTest extends PHPUnit_Framework_TestCase
         $this->getMediator()->dispatch('colleague_3', $this->getHandler());
         $colleague_3 = ob_get_clean();
 
-        $this->assertEquals($colleague_1, "How are you?\n");
-        $this->assertEquals($colleague_2, "Fine, thanks!\n");
-        $this->assertEquals($colleague_3, "Fuck you all!\n");
+        $this->assertEquals($colleague_1, "Colleague1: How are you?\n");
+        $this->assertEquals($colleague_2, "Colleague2: Fine, thanks!\n");
+        $this->assertEquals($colleague_3, "Colleague3: Fuck you all!\n");
     }
 
     /**
