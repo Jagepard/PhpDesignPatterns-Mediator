@@ -7,10 +7,6 @@
 
 namespace Behavioral\Mediator;
 
-/**
- * Interface MediatorInterface
- * @package Behavioral\Mediator
- */
 interface MediatorInterface
 {
     /**

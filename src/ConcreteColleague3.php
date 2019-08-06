@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-/**
- * Class ConcreteColleague3
- * @package Behavioral\Mediator
- */
 class ConcreteColleague3 implements ListenerInterface
 {
     /**
@@ -20,7 +16,7 @@ class ConcreteColleague3 implements ListenerInterface
      */
     public function onEvent(HandlerInterface $handler): void
     {
-        $handler->setMessage('Fuck you all!');
+        $handler->setMessage('Colleague3: Fuck you all!');
         printf("%s\n", $handler->getMessage());
     }
 }

@@ -9,14 +9,10 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-/**
- * Class ConcreteColleague1
- * @package Behavioral\Mediator
- */
 class ConcreteColleague1 implements ListenerInterface
 {
     public function onEvent(): void
     {
-        printf("%s\n", 'How are you?');
+        printf("%s\n", 'Colleague1: How are you?');
     }
 }

@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-/**
- * Class SomeHandler
- * @package Behavioral\Mediator
- */
 class SomeHandler implements HandlerInterface
 {
     /**
