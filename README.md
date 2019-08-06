@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-498e7f.svg)](https://mit-license.org/)
 -----
 # Mediator | [API](https://github.com/Jagepard/PhpDesignPatterns-Mediator/blob/master/docs.md "Documentation API")
+```php run``` Запустить исполнение шаблона в терминале
+
 Медиатор
 
 ![Iterator](https://github.com/Jagepard/PhpDesignPatterns-Mediator/blob/master/UML.png)
