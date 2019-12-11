@@ -3,19 +3,19 @@
 declare(strict_types=1);
 
 /**
- * @author    : Korotkov Danila <dankorot@gmail.com>
- * @license   https://mit-license.org/ MIT
+ * @author  : Jagepard <jagepard@yandex.ru>
+ * @license https://mit-license.org/ MIT
  */
 
 namespace Behavioral\Mediator\Tests;
 
 use Behavioral\Mediator\HandlerInterface;
-use Behavioral\Mediator\SomeHandler;
-use Behavioral\Mediator\ConcreteMediator;
+use Behavioral\Mediator\Handler;
+use Behavioral\Mediator\Mediator;
 use Behavioral\Mediator\MediatorInterface;
-use Behavioral\Mediator\ConcreteColleague1;
-use Behavioral\Mediator\ConcreteColleague2;
-use Behavioral\Mediator\ConcreteColleague3;
+use Behavioral\Mediator\Colleague1;
+use Behavioral\Mediator\Colleague2;
+use Behavioral\Mediator\Colleague3;
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 
 class MediatorTest extends PHPUnit_Framework_TestCase
@@ -31,52 +31,36 @@ class MediatorTest extends PHPUnit_Framework_TestCase
 
     protected function setUp(): void
     {
-        $this->handler  = new SomeHandler();
-        $this->mediator = new ConcreteMediator();
+        $this->handler = new Handler();
+        $this->mediator = new Mediator();
     }
 
     public function testInstance(): void
     {
         $this->assertInstanceOf(MediatorInterface::class, $this->mediator);
-        $this->assertInstanceOf(SomeHandler::class, $this->getHandler());
+        $this->assertInstanceOf(Handler::class, $this->handler);
     }
 
     public function testDispatch(): void
     {
-        $this->getMediator()->addListener('colleague_1', [new ConcreteColleague1(), 'onEvent']);
-        $this->getMediator()->addListener('colleague_2', [new ConcreteColleague2(), 'onEvent']);
-        $this->getMediator()->addListener('colleague_3', [ConcreteColleague3::class, 'onEvent']);
+        $this->mediator->addListener('colleague_1', [new Colleague1(), 'onEvent']);
+        $this->mediator->addListener('colleague_2', [new Colleague2(), 'onEvent']);
+        $this->mediator->addListener('colleague_3', [Colleague3::class, 'onEvent']);
 
         ob_start();
-        $this->getMediator()->dispatch('colleague_1', $this->getHandler());
+        $this->mediator->dispatch('colleague_1', $this->handler);
         $colleague_1 = ob_get_clean();
 
         ob_start();
-        $this->getMediator()->dispatch('colleague_2', $this->getHandler());
+        $this->mediator->dispatch('colleague_2', $this->handler);
         $colleague_2 = ob_get_clean();
 
         ob_start();
-        $this->getMediator()->dispatch('colleague_3', $this->getHandler());
+        $this->mediator->dispatch('colleague_3', $this->handler);
         $colleague_3 = ob_get_clean();
 
         $this->assertEquals($colleague_1, "Colleague1: How are you?\n");
         $this->assertEquals($colleague_2, "Colleague2: Fine, thanks!\n");
         $this->assertEquals($colleague_3, "Colleague3: Fuck you all!\n");
-    }
-
-    /**
-     * @return HandlerInterface
-     */
-    public function getHandler(): HandlerInterface
-    {
-        return $this->handler;
-    }
-
-    /**
-     * @return MediatorInterface
-     */
-    public function getMediator(): MediatorInterface
-    {
-        return $this->mediator;
     }
 }
