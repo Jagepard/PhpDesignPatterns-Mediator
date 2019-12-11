@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 /**
- * @author    : Korotkov Danila <dankorot@gmail.com>
- * @license   https://mit-license.org/ MIT
+ * @author  : Jagepard <jagepard@yandex.ru>
+ * @license https://mit-license.org/ MIT
  */
 
 namespace Behavioral\Mediator;
 
-class SomeHandler implements HandlerInterface
+class Handler implements HandlerInterface
 {
     /**
-     * @var
+     * @var string
      */
     private $message;
 

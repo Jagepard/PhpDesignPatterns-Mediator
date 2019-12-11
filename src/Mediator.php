@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 /**
- * @author    : Korotkov Danila <dankorot@gmail.com>
- * @license   https://mit-license.org/ MIT
+ * @author  : Jagepard <jagepard@yandex.ru>
+ * @license https://mit-license.org/ MIT
  */
 
 namespace Behavioral\Mediator;
 
-class ConcreteMediator implements MediatorInterface
+class Mediator implements MediatorInterface
 {
     /**
      * @var array
@@ -17,8 +17,8 @@ class ConcreteMediator implements MediatorInterface
     private $listeners = [];
 
     /**
-     * @param string $name
-     * @param array  $listener
+     * @param  string  $name
+     * @param  array  $listener
      */
     public function addListener(string $name, array $listener): void
     {
@@ -34,14 +34,14 @@ class ConcreteMediator implements MediatorInterface
     }
 
     /**
-     * @param string                $name
-     * @param HandlerInterface|null $handler
+     * @param  string  $name
+     * @param  HandlerInterface|null  $handler
      * @return mixed
      */
     public function dispatch(string $name, HandlerInterface $handler = null)
     {
         if (array_key_exists($name, $this->listeners)) {
-            $class  = $this->listeners[$name][0];
+            $class = $this->listeners[$name][0];
             $method = $this->listeners[$name][1];
 
             if (is_string($class) && class_exists($class)) {
@@ -51,6 +51,6 @@ class ConcreteMediator implements MediatorInterface
             return $class->$method($handler);
         }
 
-        throw new \InvalidArgumentException('Listener ' . $name . ' does not exist');
+        throw new \InvalidArgumentException('Listener '.$name.' does not exist');
     }
 }
