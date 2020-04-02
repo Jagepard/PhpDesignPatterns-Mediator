@@ -11,10 +11,7 @@ namespace Behavioral\Mediator;
 
 class Mediator implements MediatorInterface
 {
-    /**
-     * @var array
-     */
-    private $listeners = [];
+    private array $listeners = [];
 
     /**
      * @param  string  $name
