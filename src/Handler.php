@@ -11,10 +11,7 @@ namespace Behavioral\Mediator;
 
 class Handler implements HandlerInterface
 {
-    /**
-     * @var string
-     */
-    private $message;
+    private string $message;
 
     /**
      * @param string $message
