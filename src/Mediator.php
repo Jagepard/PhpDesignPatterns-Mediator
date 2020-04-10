@@ -14,8 +14,8 @@ class Mediator implements MediatorInterface
     private array $listeners = [];
 
     /**
-     * @param  string  $name
-     * @param  array  $listener
+     * @param string $name
+     * @param array  $listener
      */
     public function addListener(string $name, array $listener): void
     {
@@ -31,14 +31,14 @@ class Mediator implements MediatorInterface
     }
 
     /**
-     * @param  string  $name
-     * @param  HandlerInterface|null  $handler
+     * @param string                $name
+     * @param HandlerInterface|null $handler
      * @return mixed
      */
-    public function dispatch(string $name, HandlerInterface $handler = null)
+    public function notify(string $name, HandlerInterface $handler = null)
     {
         if (array_key_exists($name, $this->listeners)) {
-            $class = $this->listeners[$name][0];
+            $class  = $this->listeners[$name][0];
             $method = $this->listeners[$name][1];
 
             if (is_string($class) && class_exists($class)) {
@@ -48,6 +48,6 @@ class Mediator implements MediatorInterface
             return $class->$method($handler);
         }
 
-        throw new \InvalidArgumentException('Listener '.$name.' does not exist');
+        throw new \InvalidArgumentException('Listener ' . $name . ' does not exist');
     }
 }
