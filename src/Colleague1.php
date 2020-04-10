@@ -13,6 +13,6 @@ class Colleague1 implements ListenerInterface
 {
     public function onEvent(): void
     {
-        printf("%s\n", 'Colleague1: How are you?');
+        printf("%s\n", 'Colleague1: reacts on notify');
     }
 }

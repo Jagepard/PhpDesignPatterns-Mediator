@@ -16,7 +16,7 @@ class Colleague3 implements ListenerInterface
      */
     public function onEvent(HandlerInterface $handler): void
     {
-        $handler->setMessage('Colleague3: Fuck you all!');
+        $handler->setMessage('Colleague3: reacts on notify');
         printf("%s\n", $handler->getMessage());
     }
 }
