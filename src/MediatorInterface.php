@@ -20,5 +20,5 @@ interface MediatorInterface
      * @param  HandlerInterface|null  $handler
      * @return mixed
      */
-    public function dispatch(string $name, HandlerInterface $handler = null);
+    public function notify(string $name, HandlerInterface $handler = null);
 }
