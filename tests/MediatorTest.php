@@ -11,22 +11,23 @@ namespace Behavioral\Mediator\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 use Behavioral\Mediator\{
-    HandlerInterface, 
-    Handler, Mediator, 
-    MediatorInterface, 
-    Colleague1, 
-    Colleague2, 
+    HandlerInterface,
+    Handler,
+    Mediator,
+    MediatorInterface,
+    Colleague1,
+    Colleague2,
     Colleague3
 };
 
 class MediatorTest extends PHPUnit_Framework_TestCase
 {
-    private HandlerInterface $handler;
+    private HandlerInterface  $handler;
     private MediatorInterface $mediator;
 
     protected function setUp(): void
     {
-        $this->handler = new Handler();
+        $this->handler  = new Handler();
         $this->mediator = new Mediator();
     }
 
@@ -43,19 +44,19 @@ class MediatorTest extends PHPUnit_Framework_TestCase
         $this->mediator->addListener('colleague_3', [Colleague3::class, 'onEvent']);
 
         ob_start();
-        $this->mediator->dispatch('colleague_1', $this->handler);
+        $this->mediator->notify('colleague_1', $this->handler);
         $colleague_1 = ob_get_clean();
 
         ob_start();
-        $this->mediator->dispatch('colleague_2', $this->handler);
+        $this->mediator->notify('colleague_2', $this->handler);
         $colleague_2 = ob_get_clean();
 
         ob_start();
-        $this->mediator->dispatch('colleague_3', $this->handler);
+        $this->mediator->notify('colleague_3', $this->handler);
         $colleague_3 = ob_get_clean();
 
-        $this->assertEquals($colleague_1, "Colleague1: How are you?\n");
-        $this->assertEquals($colleague_2, "Colleague2: Fine, thanks!\n");
-        $this->assertEquals($colleague_3, "Colleague3: Fuck you all!\n");
+        $this->assertEquals($colleague_1, "Colleague1: reacts on notify\n");
+        $this->assertEquals($colleague_2, "Colleague2: reacts on notify\n");
+        $this->assertEquals($colleague_3, "Colleague3: reacts on notify\n");
     }
 }
