@@ -10,10 +10,11 @@ namespace Behavioral\Mediator;
 interface MediatorInterface
 {
     /**
-     * @param  string  $name
-     * @param  array  $listener
+     * @param string           $name
+     * @param AbstractListener $listener
+     * @param string           $method
      */
-    public function addListener(string $name, array $listener): void;
+    public function addListener(string $name, AbstractListener $listener, string $method): void;
 
     /**
      * @param  string  $name

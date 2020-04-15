@@ -9,14 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-class Colleague2 implements ListenerInterface
+class Colleague2 extends AbstractListener
 {
-    /**
-     * @param HandlerInterface $handler
-     */
-    public function onEvent(HandlerInterface $handler): void
-    {
-        $handler->setMessage('Colleague2: reacts on notify');
-        printf("%s\n", $handler->getMessage());
-    }
 }

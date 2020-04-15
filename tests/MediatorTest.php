@@ -37,11 +37,11 @@ class MediatorTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Handler::class, $this->handler);
     }
 
-    public function testDispatch(): void
+    public function testNotify(): void
     {
-        $this->mediator->addListener('colleague_1', [new Colleague1(), 'onEvent']);
-        $this->mediator->addListener('colleague_2', [new Colleague2(), 'onEvent']);
-        $this->mediator->addListener('colleague_3', [Colleague3::class, 'onEvent']);
+        $this->mediator->addListener("colleague_1", new Colleague1(), "onEvent");
+        $this->mediator->addListener("colleague_2", new Colleague2(), "onEvent");
+        $this->mediator->addListener("colleague_3", new Colleague3(), "onEvent");
 
         ob_start();
         $this->mediator->notify('colleague_1', $this->handler);
@@ -55,8 +55,8 @@ class MediatorTest extends PHPUnit_Framework_TestCase
         $this->mediator->notify('colleague_3', $this->handler);
         $colleague_3 = ob_get_clean();
 
-        $this->assertEquals($colleague_1, "Colleague1: reacts on notify\n");
-        $this->assertEquals($colleague_2, "Colleague2: reacts on notify\n");
-        $this->assertEquals($colleague_3, "Colleague3: reacts on notify\n");
+        $this->assertEquals($colleague_1, "Behavioral\Mediator\Colleague1: Fine, thanks!\n");
+        $this->assertEquals($colleague_2, "Behavioral\Mediator\Colleague2: Fine, thanks!\n");
+        $this->assertEquals($colleague_3, "Behavioral\Mediator\Colleague3: Fine, thanks!\n");
     }
 }
