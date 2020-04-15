@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-class Colleague1 implements ListenerInterface
+class Colleague1 extends AbstractListener
 {
-    public function onEvent(): void
-    {
-        printf("%s\n", 'Colleague1: reacts on notify');
-    }
 }
