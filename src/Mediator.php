@@ -14,20 +14,17 @@ class Mediator implements MediatorInterface
     private array $listeners = [];
 
     /**
-     * @param string $name
-     * @param array  $listener
+     * @param string           $name
+     * @param AbstractListener $listener
+     * @param string           $method
      */
-    public function addListener(string $name, array $listener): void
+    public function addListener(string $name, AbstractListener $listener, string $method): void
     {
-        if (count($listener) !== 2) {
-            throw new \InvalidArgumentException('Array must have two elements');
-        }
-
         if (array_key_exists($name, $this->listeners)) {
             throw new \InvalidArgumentException('Listener already exists');
         }
 
-        $this->listeners[$name] = $listener;
+        $this->listeners[$name] = [$listener, $method];
     }
 
     /**
@@ -40,10 +37,6 @@ class Mediator implements MediatorInterface
         if (array_key_exists($name, $this->listeners)) {
             $class  = $this->listeners[$name][0];
             $method = $this->listeners[$name][1];
-
-            if (is_string($class) && class_exists($class)) {
-                return (new $class())->$method($handler);
-            }
 
             return $class->$method($handler);
         }
