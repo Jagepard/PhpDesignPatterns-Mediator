@@ -5,20 +5,19 @@ namespace Behavioral\Mediator;
 
 require_once 'vendor/autoload.php';
 
-$helper    = new Handler();
+$handler   = new Handler();
 $mediator  = new Mediator();
 $listener1 = new Colleague1();
 $listener2 = new Colleague2();
 $listener3 = new Colleague3();
 
 try {
-    $mediator->addListener(Colleague1::class, $listener1, "onEvent");
-    $mediator->addListener(Colleague2::class, $listener2, "onEvent");
-    $mediator->addListener(Colleague3::class, $listener3, "onEvent");
-
-    $listener1->toGreet(Colleague2::class, $mediator, $helper);
-    $listener2->toGreet(Colleague3::class, $mediator, $helper);
-    $listener3->toGreet(Colleague1::class, $mediator, $helper);
+    $mediator->addListener($listener1, "onEvent");
+    $mediator->addListener($listener2, "onEvent");
+    $mediator->addListener($listener3, "onEvent");
+    $listener1->toGreet(Colleague2::class, $mediator, $handler);
+    $listener2->toGreet(Colleague3::class, $mediator, $handler);
+    $listener3->toGreet(Colleague1::class, $mediator, $handler);
 } catch (\Exception $e) {
     echo "Caught exception: ", $e->getMessage(), "\n";
 }
