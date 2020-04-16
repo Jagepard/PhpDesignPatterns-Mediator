@@ -39,20 +39,20 @@ class MediatorTest extends PHPUnit_Framework_TestCase
 
     public function testNotify(): void
     {
-        $this->mediator->addListener("colleague_1", new Colleague1(), "onEvent");
-        $this->mediator->addListener("colleague_2", new Colleague2(), "onEvent");
-        $this->mediator->addListener("colleague_3", new Colleague3(), "onEvent");
+        $this->mediator->addListener(new Colleague1(), "onEvent");
+        $this->mediator->addListener(new Colleague2(), "onEvent");
+        $this->mediator->addListener(new Colleague3(), "onEvent");
 
         ob_start();
-        $this->mediator->notify('colleague_1', $this->handler);
+        $this->mediator->notify(Colleague1::class, $this->handler);
         $colleague_1 = ob_get_clean();
 
         ob_start();
-        $this->mediator->notify('colleague_2', $this->handler);
+        $this->mediator->notify(Colleague2::class, $this->handler);
         $colleague_2 = ob_get_clean();
 
         ob_start();
-        $this->mediator->notify('colleague_3', $this->handler);
+        $this->mediator->notify(Colleague3::class, $this->handler);
         $colleague_3 = ob_get_clean();
 
         $this->assertEquals($colleague_1, "Behavioral\Mediator\Colleague1: Fine, thanks!\n");
