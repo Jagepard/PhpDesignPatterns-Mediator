@@ -12,12 +12,14 @@ $listener2 = new Colleague2();
 $listener3 = new Colleague3();
 
 try {
-    $mediator->addListener($listener1, "onEvent");
-    $mediator->addListener($listener2, "onEvent");
-    $mediator->addListener($listener3, "onEvent");
-    $listener1->toGreet(Colleague2::class, $mediator, $handler);
-    $listener2->toGreet(Colleague3::class, $mediator, $handler);
-    $listener3->toGreet(Colleague1::class, $mediator, $handler);
+    // Adds a listener as well as an mediator to the listener
+    $mediator->addListener($listener1, "toAnswer");
+    $mediator->addListener($listener2, "toReact");
+    $mediator->addListener($listener3, "sendToHell");
+
+    $listener1->toGreet($listener2, $handler);
+    $listener2->toGreet($listener3, $handler);
+    $listener3->toGreet($listener1, $handler);
 } catch (\Exception $e) {
     echo "Caught exception: ", $e->getMessage(), "\n";
 }

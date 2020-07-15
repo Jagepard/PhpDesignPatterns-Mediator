@@ -11,4 +11,9 @@ namespace Behavioral\Mediator;
 
 class Colleague1 extends AbstractListener
 {
+    public function toAnswer(HandlerInterface $handler): void
+    {
+        $handler->setMessage(get_called_class() . ": Fine, thanks!");
+        printf("%s\n", $handler->getMessage());
+    }
 }
