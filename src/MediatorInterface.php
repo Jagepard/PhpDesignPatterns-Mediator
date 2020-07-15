@@ -16,9 +16,9 @@ interface MediatorInterface
     public function addListener(AbstractListener $listener, string $method): void;
 
     /**
-     * @param string           $listenerName
-     * @param HandlerInterface $handler
+     * @param AbstractListener $listener
+     * @param HandlerInterface|null $handler
      * @return mixed
      */
-    public function notify(string $listenerName, HandlerInterface $handler);
+    public function notify(AbstractListener $listener, HandlerInterface $handler = null);
 }

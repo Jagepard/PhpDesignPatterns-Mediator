@@ -11,20 +11,25 @@ namespace Behavioral\Mediator;
 
 abstract class AbstractListener
 {
-    public function onEvent(HandlerInterface $handler): void
+    protected MediatorInterface $mediator;
+
+    /**
+     * @param MediatorInterface $mediator
+     */
+    public function setMediator(MediatorInterface $mediator)
     {
-        $handler->setMessage(get_called_class() . ": Fine, thanks!");
-        printf("%s\n", $handler->getMessage());
+        $this->mediator = $mediator;
     }
 
     /**
-     * @param string            $listenerName
-     * @param MediatorInterface $mediator
-     * @param HandlerInterface  $handler
+     * @param AbstractListener $listener
+     * @param HandlerInterface $handler
      */
-    public function toGreet(string $listenerName, MediatorInterface $mediator, HandlerInterface $handler): void
+    public function toGreet(AbstractListener $listener, HandlerInterface $handler): void
     {
-        printf("%s\n", get_called_class() . ": How are you $listenerName?");
-        $mediator->notify($listenerName, $handler);
+        $listenerName = get_class($listener);
+        printf("%s\n", get_called_class() . ": How are you " . $listenerName . "?");
+
+        $this->mediator->notify($listener, $handler);
     }
 }
