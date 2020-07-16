@@ -3,7 +3,7 @@
 
 namespace Behavioral\Mediator;
 
-require_once 'vendor/autoload.php';
+require_once "vendor/autoload.php";
 
 $handler   = new Handler();
 $mediator  = new Mediator();
