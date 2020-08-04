@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/Jagepard/PhpDesignPatterns-Mediator/badges/gpa.svg)](https://codeclimate.com/github/Jagepard/PhpDesignPatterns-Mediator)
 [![License: MIT](https://img.shields.io/badge/license-MIT-498e7f.svg)](https://mit-license.org/)
 -----
-# Mediator
+# Mediator | [API](https://github.com/Jagepard/PhpDesignPatterns-Mediator/blob/master/api.md)
 ```php run``` execute in terminal
 
 ## Result:
