@@ -15,7 +15,7 @@ class Mediator implements MediatorInterface
 
     /**
      * @param AbstractListener $listener
-     * @param string           $method
+     * @param string $method
      */
     public function addListener(AbstractListener $listener, string $method): void
     {
@@ -26,7 +26,11 @@ class Mediator implements MediatorInterface
         }
 
         $listener->setMediator($this);
-        $this->listeners[$listenerName] = [$listener, $method];
+
+        $this->listeners[$listenerName] = [
+            "class"  => $listener,
+            "method" => $method
+        ];
     }
 
     /**
@@ -39,10 +43,7 @@ class Mediator implements MediatorInterface
         $listenerName = get_class($listener);
 
         if (array_key_exists($listenerName, $this->listeners)) {
-            $class  = $this->listeners[$listenerName][0];
-            $method = $this->listeners[$listenerName][1];
-
-            return $class->$method($handler);
+            return $this->listeners[$listenerName]["class"]->{$this->listeners[$listenerName]["method"]}($handler);
         }
 
         throw new \InvalidArgumentException("Listener " . $listenerName . " does not exist");
