@@ -27,9 +27,7 @@ abstract class AbstractListener
      */
     public function toGreet(AbstractListener $listener, HandlerInterface $handler): void
     {
-        $listenerName = get_class($listener);
-        printf("%s\n", get_called_class() . ": How are you " . $listenerName . "?");
-
+        printf("%s\n", get_called_class() . ": How are you " . get_class($listener) . "?");
         $this->mediator->notify($listener, $handler);
     }
 }
