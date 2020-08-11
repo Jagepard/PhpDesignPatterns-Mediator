@@ -13,9 +13,6 @@ class Handler implements HandlerInterface
 {
     private string $message;
 
-    /**
-     * @param string $message
-     */
     public function setMessage(string $message)
     {
         $this->message = $message;

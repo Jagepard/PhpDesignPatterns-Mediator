@@ -13,18 +13,11 @@ abstract class AbstractListener
 {
     protected MediatorInterface $mediator;
 
-    /**
-     * @param MediatorInterface $mediator
-     */
     public function setMediator(MediatorInterface $mediator)
     {
         $this->mediator = $mediator;
     }
 
-    /**
-     * @param AbstractListener $listener
-     * @param HandlerInterface $handler
-     */
     public function toGreet(AbstractListener $listener, HandlerInterface $handler): void
     {
         printf("%s\n", get_called_class() . ": How are you " . get_class($listener) . "?");
