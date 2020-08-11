@@ -13,10 +13,6 @@ class Mediator implements MediatorInterface
 {
     private array $listeners = [];
 
-    /**
-     * @param AbstractListener $listener
-     * @param string $method
-     */
     public function addListener(AbstractListener $listener, string $method): void
     {
         $listenerName = get_class($listener);
@@ -33,11 +29,6 @@ class Mediator implements MediatorInterface
         ];
     }
 
-    /**
-     * @param AbstractListener $listener
-     * @param HandlerInterface|null $handler
-     * @return mixed
-     */
     public function notify(AbstractListener $listener, HandlerInterface $handler = null)
     {
         $listenerName = get_class($listener);
