@@ -18,9 +18,6 @@ class Handler implements HandlerInterface
         $this->message = $message;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return $this->message;
