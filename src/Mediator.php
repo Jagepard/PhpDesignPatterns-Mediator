@@ -27,10 +27,8 @@ class Mediator implements MediatorInterface
         ];
     }
 
-    public function notify(AbstractListener $listener, HandlerInterface $handler = null)
+    public function notify(string $listenerName, HandlerInterface $handler = null)
     {
-        $listenerName = get_class($listener);
-
         if (array_key_exists($listenerName, $this->listeners)) {
             return $this->listeners[$listenerName]["class"]->{$this->listeners[$listenerName]["method"]}($handler);
         }
