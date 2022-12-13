@@ -39,9 +39,9 @@ class MediatorTest extends PHPUnit_Framework_TestCase
 
     public function testNotify(): void
     {
-        $listener1 = new Colleague1();
-        $listener2 = new Colleague2();
-        $listener3 = new Colleague3();
+        $listener1 = new Colleague1($this->mediator);
+        $listener2 = new Colleague2($this->mediator);
+        $listener3 = new Colleague3($this->mediator);
 
         $this->mediator->addListener($listener1, "toAnswer");
         $this->mediator->addListener($listener2, "toReact");
