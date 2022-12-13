@@ -13,7 +13,7 @@ abstract class AbstractListener
 {
     protected MediatorInterface $mediator;
 
-    public function setMediator(MediatorInterface $mediator)
+    public function __construct(MediatorInterface $mediator)
     {
         $this->mediator = $mediator;
     }
