@@ -16,9 +16,9 @@ try {
     $mediator->addListener($listener2, "toReact");
     $mediator->addListener($listener3, "sendToHell");
 
-    $listener1->toGreet($listener2, $handler);
-    $listener2->toGreet($listener3, $handler);
-    $listener3->toGreet($listener1, $handler);
+    $listener1->dispatch($listener2, $handler);
+    $listener2->dispatch($listener3, $handler);
+    $listener3->dispatch($listener1, $handler);
 } catch (\Exception $e) {
     echo "Caught exception: ", $e->getMessage(), "\n";
 }
