@@ -9,11 +9,10 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-class Colleague1 extends AbstractListener
+class Colleague1 implements ListenerInterface
 {
-    public function toAnswer(HandlerInterface $handler): void
+    public function toAnswer(): void
     {
-        $handler->setMessage(get_called_class() . ": Fine, thanks!");
-        printf("%s\n", $handler->getMessage());
+        printf("%s\n", get_called_class() . ": Alerted!");
     }
 }

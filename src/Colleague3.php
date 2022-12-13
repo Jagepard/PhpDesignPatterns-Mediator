@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace Behavioral\Mediator;
 
-class Colleague3 extends AbstractListener
+class Colleague3 implements ListenerInterface
 {
     public function sendToHell(): void
     {
-        printf("%s\n", get_called_class() . ": Go to hell!");
+        printf("%s\n", get_called_class() . ": Alerted!");
     }
 }

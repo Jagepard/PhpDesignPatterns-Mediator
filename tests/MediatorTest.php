@@ -27,7 +27,6 @@ class MediatorTest extends PHPUnit_Framework_TestCase
 
     protected function setUp(): void
     {
-        $this->handler  = new Handler();
         $this->mediator = new Mediator();
     }
 
@@ -37,30 +36,26 @@ class MediatorTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Handler::class, $this->handler);
     }
 
-    public function testNotify(): void
+    public function testDispatch(): void
     {
-        $listener1 = new Colleague1($this->mediator);
-        $listener2 = new Colleague2($this->mediator);
-        $listener3 = new Colleague3($this->mediator);
-
-        $this->mediator->addListener($listener1, "toAnswer");
-        $this->mediator->addListener($listener2, "toReact");
-        $this->mediator->addListener($listener3, "sendToHell");
+        $this->mediator->addListener(Colleague1::class, "toAnswer");
+        $this->mediator->addListener(Colleague2::class, "toReact");
+        $this->mediator->addListener(Colleague3::class, "sendToHell");
 
         ob_start();
-        $this->mediator->notify($listener1, $this->handler);
+        $this->mediator->dispatch(Colleague1::class);
         $colleague_1 = ob_get_clean();
 
         ob_start();
-        $this->mediator->notify($listener2, $this->handler);
+        $this->mediator->dispatch(Colleague2::class);
         $colleague_2 = ob_get_clean();
 
         ob_start();
-        $this->mediator->notify($listener3, $this->handler);
+        $this->mediator->dispatch(Colleague3::class);
         $colleague_3 = ob_get_clean();
 
-        $this->assertEquals("Behavioral\Mediator\Colleague1: Fine, thanks!\n", $colleague_1);
-        $this->assertEquals("Behavioral\Mediator\Colleague2: Thank you, everything is OK!\n", $colleague_2);
-        $this->assertEquals("Behavioral\Mediator\Colleague3: Go to hell!\n", $colleague_3);
+        $this->assertEquals("Behavioral\Mediator\Colleague1: Alerted!\n", $colleague_1);
+        $this->assertEquals("Behavioral\Mediator\Colleague2: Alerted!\n", $colleague_2);
+        $this->assertEquals("Behavioral\Mediator\Colleague3: Alerted!\n", $colleague_3);
     }
 }

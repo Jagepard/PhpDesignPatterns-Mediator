@@ -9,6 +9,6 @@ namespace Behavioral\Mediator;
 
 interface MediatorInterface
 {
-    public function addListener(AbstractListener $listener, string $method): void;
-    public function notify(string $listenerName, HandlerInterface $handler = null);
+    public function addListener(string $listenerName, string $methodName): void;
+    public function dispatch(string $listenerName);
 }
