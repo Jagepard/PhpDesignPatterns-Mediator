@@ -10,10 +10,7 @@
 
 ## Result:
 ```
-Behavioral\Mediator\Colleague1: How are you Behavioral\Mediator\Colleague2?
-Behavioral\Mediator\Colleague2: Thank you, everything is OK!
-Behavioral\Mediator\Colleague2: How are you Behavioral\Mediator\Colleague3?
-Behavioral\Mediator\Colleague3: Go to hell!
-Behavioral\Mediator\Colleague3: How are you Behavioral\Mediator\Colleague1?
-Behavioral\Mediator\Colleague1: Fine, thanks!
+Behavioral\Mediator\Colleague1: Alerted!
+Behavioral\Mediator\Colleague2: Alerted!
+Behavioral\Mediator\Colleague3: Alerted!
 ```
