@@ -11,8 +11,6 @@ namespace Behavioral\Mediator\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnit_Framework_TestCase;
 use Behavioral\Mediator\{
-    HandlerInterface,
-    Handler,
     Mediator,
     MediatorInterface,
     Colleague1,
@@ -22,7 +20,6 @@ use Behavioral\Mediator\{
 
 class MediatorTest extends PHPUnit_Framework_TestCase
 {
-    private HandlerInterface  $handler;
     private MediatorInterface $mediator;
 
     protected function setUp(): void
