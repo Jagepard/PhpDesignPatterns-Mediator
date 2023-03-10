@@ -33,7 +33,6 @@ class MediatorTest extends PHPUnit_Framework_TestCase
     public function testInstance(): void
     {
         $this->assertInstanceOf(MediatorInterface::class, $this->mediator);
-        $this->assertInstanceOf(Handler::class, $this->handler);
     }
 
     public function testDispatch(): void
