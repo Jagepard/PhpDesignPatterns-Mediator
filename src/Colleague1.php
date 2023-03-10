@@ -11,6 +11,9 @@ namespace Behavioral\Mediator;
 
 class Colleague1 implements ListenerInterface
 {
+    /**
+     * @return void
+     */
     public function toAnswer(): void
     {
         printf("%s\n", get_called_class() . ": Alerted!");

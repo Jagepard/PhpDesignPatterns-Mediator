@@ -11,6 +11,9 @@ namespace Behavioral\Mediator;
 
 class Colleague3 implements ListenerInterface
 {
+    /**
+     * @return void
+     */
     public function sendToHell(): void
     {
         printf("%s\n", get_called_class() . ": Alerted!");
