@@ -5,7 +5,7 @@
 -----
 
 # Mediator | [API](https://github.com/Jagepard/PhpDesignPatterns-Mediator/blob/master/api.md)
-```php main.php``` execute in terminal
+```php run``` execute in terminal
 
 ## Result:
 ```

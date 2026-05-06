@@ -28,7 +28,7 @@ class Mediator implements MediatorInterface
             throw new \InvalidArgumentException("Listener already exists");
         }
 
-        $this->listeners[$listenerName] = [$listenerName,$methodName];
+        $this->listeners[$listenerName] = [$listenerName, $methodName];
     }
 
     /**
